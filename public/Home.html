@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/4/css/bootstrap.min.css" />
+    <script src="/dmxAppConnect/dmxDatastore/dmxDatastore.js" defer=""></script>
+    <script src="/dmxAppConnect/dmxStateManagement/dmxStateManagement.js" defer=""></script>
+</head>
+
+<body is="dmx-app" id="Home">
+    <dmx-api-datasource id="api2" is="dmx-fetch" url="https://api.apispreadsheets.com/data/8562/"></dmx-api-datasource>
+
+    <dmx-api-datasource id="api1" is="dmx-fetch" url="https://api.apispreadsheets.com/data/8497/"></dmx-api-datasource>
+    <section>
+        <div class="container">
+
+            <div class="row">
+                <h1>Discover</h1>
+            </div>
+            <div class="row">
+                <h5>WEEKLY COMMUNITY RANKING</h5>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col" class="text-center"><span style="font-weight: normal;">COM GIVE</span></th>
+                                    <th scope="col" class="text-center"><span style="font-weight: normal;">MEMBERS</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dmx-repeat:repeat1="api1.data.data">
+                                    <th scope="row">{{image}}</th>
+                                    <td>{{company}}</td>
+                                    <td class="text-center">{{commision}}</td>
+                                    <td class="text-center">{{member}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>WEEKLY PRODUCTS RATING</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col" class="text-center"><span style="font-weight: 400;">Sales</span></th>
+                                    <th scope="col" class="text-center"><span style="font-weight: normal;">SOLD</span></th>
+                                </tr>
+                            </thead>
+                            <tbody is="dmx-repeat" id="repeat2" dmx-bind:repeat="api2.data.data">
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>{{product}}</td>
+                                    <td class="text-center">{{sales}}</td>
+                                    <td class="text-center">{{sold}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/bootstrap/4/js/popper.min.js"></script>
+    <script src="/bootstrap/4/js/bootstrap.min.js"></script>
+</body>
+
+</html>
